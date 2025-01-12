@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    
+
+<div class="upload-container">
+        <h2>Upload Your Video</h2>
+        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="video_file" accept=".mp4" required>
+            <button type="submit">Upload Video</button>
+        </form>
+        <div class="back-link">
+            <button style="appearance: none;background-color: rgb(0, 149, 255);padding: 10px 20px;border: solid 2px white;color: white;border-radius: 10px;font-weight: 600;" onclick="window.history.back()">Back</button>
+        </div>
+    </div>
+
+{% endblock %}

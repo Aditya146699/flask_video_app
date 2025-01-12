@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+    {% block content %}
+
+
+    <div class="search-container">
+        <form method="get" action="{{ url_for('index') }}" class="search-form">
+            <div class="search-input-container">
+                <input type="text" name="search" id="search-input" placeholder="Search for videos..." value="{{ request.args.get('search', '') }}" oninput="filterVideos()">
+                <button type="submit" class="search-btn">
+                    <i class="vjs-icon-circle-outline"></i>
+                </button>
+                <button type="button" class="clear-btn" aria-label="Clear Search" onclick="clearSearch()">
+                    <i class="vjs-icon-cancel"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+
+    <div class="video-grid">
+        {% for video, thumbnail in video_thumbnail_pairs %}
+        <div class="video-card" onclick="window.location=`{{ url_for('video', video_name=video) }}`">
+            <div class="thumbnail-container">
+                <img src="{{ thumbnail }}" alt="{{ video }}" class="video-thumbnail">
+            </div>
+            <div style="background-color: red;color:#fff;border-radius: 10px; padding: 10px;display: flex;justify-content: center;width: 20px;font-weight: 600;position: absolute;top: 10px;left: 10px;">HD</div>
+
+            <div class="video-info">
+                <h3 class="video-title">{{ video }}</h3>
+                <div class="video-meta">
+                    <span>1.2K views</span> • <span>2 hours ago</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endblock %}
+
+
+
+
+
+   
+      

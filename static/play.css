@@ -1,0 +1,173 @@
+.video-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 99%;
+    max-width: 800px;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: opacity 0.3s;
+    flex-wrap: wrap;
+}
+
+.controls.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.controls > * {
+    margin: 5px;
+}
+
+.video-player button, select, input[type="range"] {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.video-player button:hover {
+    transform: scale(1.1);
+}
+
+input[type="range"] {
+    width: 100px;
+    accent-color: #f00;
+}
+
+.progress-container {
+    flex-grow: 1;
+    margin: 0 10px;
+    position: relative;
+    min-width: 200px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background: #444;
+    border-radius: 2px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.progress {
+    height: 100%;
+    background: #f00;
+    border-radius: 2px;
+}
+
+.time-display {
+    color: white;
+    font-size: 0.8em;
+    margin: 0 10px;
+}
+
+.settings-dropdown {
+    position: relative;
+}
+
+.settings-menu {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 150px;
+}
+
+.settings-menu.show {
+    display: block;
+}
+
+.settings-menu label {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    color: white;
+}
+
+#fullscreen{
+margin-right: 20px;
+}
+@media (max-width: 800px) {
+    input[type="range"] {
+        width: 0px;
+        display: none;
+    }
+    .progress-container {
+        min-width: 50px;
+    }
+    #stop {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    input[type="range"] {
+        width: 0px;
+        visibility: hidden;
+    }
+    .progress-container {
+        min-width: 50px;
+    }
+    .video-player {
+    width: 100%;
+    margin: auto;
+}
+.logo{
+    font-size: 25px;
+}
+
+}
+
+@media (max-width: 500px) {
+ 
+    .video-player {
+    width: 100%;
+    margin: auto;
+}
+.logo{
+    font-size: 25px;
+}
+.settings-dropdown{
+display: none;
+}
+#mute{
+    display: none;
+}
+#fullscreen{
+margin-right: 5px;
+}
+}

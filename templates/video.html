@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>{{ video_name }}</h2>
+    
+
+    <div class="video-player">
+
+        <div class="T-vid">
+            <span style="padding-left: 8px;padding: 5px;">AGENT</span>
+            <span style="background-color: #f00;padding: 5px;">RED</span>
+            <span style="padding-right: 8px;padding: 5px;">GIRL</span>
+        </div>
+
+        <video id="video" src="{{ url_for('static', filename='videos/' + video_name) }}" aria-controls="" controlsList="nodownload" ></video> 
+        
+        <div class="controls hidden" id="controls">
+            <button id="playPause" title="Play/Pause (Space)"><i class="vjs-icon-play"></i></button>
+            <button id="stop" title="Stop" style="width:12px ;height: 12px;background-color: #fff;"></button>
+            <button id="mute" title="Mute (M)"><i class="vjs-icon-volume-high"></i></button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="1" title="Volume">
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+            
+            <span class="time-display" id="current-time">0:00</span>
+            <span class="time-display" id="duration">0:29</span>
+
+            <div class="settings-dropdown">
+                <button id="settings" title="Settings"><i class="vjs-icon-cog"></i></button>
+                <div class="settings-menu" id="settings-menu">
+                    <label>Filter:
+                        <select id="filter" style="background-color: #000;">
+                            <option value="none">No Filter</option>
+                            <option value="grayscale(100%)">Grayscale</option>
+                            <option value="sepia(100%)">Sepia</option>
+                            <option value="invert(100%)">Invert</option>
+                            <option value="blur(10px)">Blur</option>
+                            <option value="blur(5px) contrast(80%) brightness(120%) saturate(150%)">My filer</option>
+
+                        </select>
+                    </label>
+                    <label>Speed:
+                        <select id="playbackRate" style="background-color: #000;">
+                            <option value="0.5">0.5x</option>
+                            <option value="1" selected="">1x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <button id="picture-in-picture" title="Picture-in-Picture"><i class="vjs-icon-picture-in-picture-enter"></i></button>
+            <button id="fullscreen" title="Fullscreen (F)" ><i class="vjs-icon-fullscreen-enter"></i></button>
+        </div>
+        
+        <div class="loading" id="loading"><i class="vjs-icon-spinner" style="font-size: 150px;"></i>  </div>
+    </div>
+
+
+    <br>
+    <button style="appearance: none;background-color: rgb(0, 149, 255);padding: 10px 20px;border: solid 2px white;color: white;border-radius: 10px;font-weight: 600;" onclick="window.history.back()">Back</button>
+
+    {% endblock %}
